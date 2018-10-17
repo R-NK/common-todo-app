@@ -3,7 +3,7 @@
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
-          Component
+          {{ item.title }}
         </p>
         <a href="#" class="card-header-icon" aria-label="more options">
           <span class="icon">
@@ -13,16 +13,15 @@
       </header>
       <div class="card-content">
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-          <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+          {{ item.description }}
           <br>
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <time datetime="2016-1-1">{{ item.date }}</time>
         </div>
       </div>
       <footer class="card-footer">
-        <a href="#" class="card-footer-item">Save</a>
+        <a href="#" class="card-footer-item">Done</a>
         <a href="#" class="card-footer-item">Edit</a>
-        <a href="#" class="card-footer-item">Delete</a>
+        <a href="#" class="card-footer-item" v-on:click="$emit('remove')">Delete</a>
       </footer>
     </div>
   </div>
@@ -33,6 +32,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Card extends Vue {
-  @Prop() private msg!: string;
+  @Prop() private item!: string;
 }
 </script>
