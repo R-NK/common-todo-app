@@ -13,14 +13,17 @@
       </header>
       <div class="card-content">
         <div class="content">
-          {{ item.description }}
+          <label v-if="!edit">{{ item.description }}</label>
+          <form v-on:submit.prevent="$emit('editText', item.description)">
+            <input class="input" type="text" v-if="edit" v-model="item.description">
+          </form>
           <br>
           <time datetime="2016-1-1">{{ item.date }}</time>
         </div>
       </div>
       <footer class="card-footer">
         <a href="#" class="card-footer-item">Done</a>
-        <a href="#" class="card-footer-item">Edit</a>
+        <a href="#" class="card-footer-item" v-on:click="edit = true">Edit</a>
         <a href="#" class="card-footer-item" v-on:click="$emit('remove')">Delete</a>
       </footer>
     </div>
@@ -32,6 +35,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class Card extends Vue {
+  public edit: boolean = false;
   @Prop() private item!: string;
 }
 </script>

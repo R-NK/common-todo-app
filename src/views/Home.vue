@@ -3,7 +3,7 @@
     <div class="container">
       <img alt="Vue logo" src="../assets/logo.png">
       <div class="columns">
-        <card v-for="(item, index) in todoItems" :key="index" :item="item" v-on:remove="todoItems.splice(index, 1)"></card>
+        <card v-for="(item, index) in todoItems" :key="index" :item="item" v-on:remove="todoItems.splice(index, 1)" v-on:editText="editText"></card>
         <card-add></card-add>
       </div>
     </div>
@@ -28,6 +28,11 @@ export default class Home extends Vue {
     new TodoItem('todo2', 'ふたつめのtodo', new Date('2105-04-09T23:24:00')),
     new TodoItem('todo3', 'みっつめのtodo', new Date('2105-04-09T23:24:00')),
   ];
+
+  public editText(newText: string, index: number): void {
+    this.todoItems[index].description = newText;
+    console.log('editText: ' + newText);
+  }
 }
 
 
