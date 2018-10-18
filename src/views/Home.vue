@@ -30,7 +30,6 @@ export default class Home extends Vue {
   ];
 
   public editText(newText: string, index: number): void {
-    this.todoItems[index].description = newText;
     console.log('editText: ' + newText);
   }
 }

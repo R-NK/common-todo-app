@@ -14,7 +14,7 @@
       <div class="card-content">
         <div class="content">
           <label v-if="!edit">{{ item.description }}</label>
-          <form v-on:submit.prevent="$emit('editText', item.description)">
+          <form v-on:submit.prevent="edit = false">
             <input class="input" type="text" v-if="edit" v-model="item.description">
           </form>
           <br>
