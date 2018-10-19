@@ -2,9 +2,17 @@
   <div class="column is-3">
     <div class="card">
       <header class="card-header">
-        <p class="card-header-title">
+        <p class="card-header-title" v-if="!edit">
           {{ item.title }}
         </p>
+        <div class="control" v-if="edit">
+          <input class="input" type="text" v-model="item.title">
+        </div>
+        <!--
+        <form v-on:submit.prevent="edit = false">
+          <input class="input" type="text" v-if="edit" v-model="item.title">
+        </form>
+        -->
         <a href="#" class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-angle-down" aria-hidden="true"></i>

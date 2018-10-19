@@ -26,7 +26,7 @@ export default class Home extends Vue {
   public todoItems: TodoItem[] = [
     new TodoItem('todo1', 'ひとつめのtodo', new Date('1995-12-17T03:24:00')),
     new TodoItem('todo2', 'ふたつめのtodo', new Date('2105-04-09T23:24:00')),
-    new TodoItem('todo3', 'みっつめのtodo', new Date('2105-04-09T23:24:00')),
+    new TodoItem('todo3', 'みっつめのtodo', new Date('3201-08-23T01:24:00')),
   ];
 
   public editText(newText: string, index: number): void {
