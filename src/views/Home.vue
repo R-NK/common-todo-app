@@ -3,9 +3,10 @@
     <div class="container">
       <img alt="Vue logo" src="../assets/logo.png">
       <div class="columns">
-        <card v-for="(item, index) in todoItems" :key="index" :item="item" v-on:remove="todoItems.splice(index, 1)" v-on:editText="editText"></card>
+        <card v-for="(item, index) in todoItems" :key="index" :item="item" v-on:remove="todoItems.splice(index, 1)" v-on:editItem="editItem"></card>
         <card-add></card-add>
       </div>
+      <modal-card v-if="isEdit" :item="currentItem" v-bind:isEdit.sync="isEdit"></modal-card>
     </div>
   </div>
 </template>
@@ -15,11 +16,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import Card from '@/components/Card.vue'; // @ is an alias to /src
 import CardAdd from '@/components/CardAdd.vue';
 import TodoItem from '@/model/TodoItem.ts';
+import ModalCard from '@/components/ModalCard.vue';
 
 @Component({
   components: {
     Card,
     CardAdd,
+    ModalCard,
   },
 })
 export default class Home extends Vue {
@@ -29,8 +32,13 @@ export default class Home extends Vue {
     new TodoItem('todo3', 'みっつめのtodo', new Date('3201-08-23T01:24:00')),
   ];
 
-  public editText(newText: string, index: number): void {
-    console.log('editText: ' + newText);
+  private currentItem: TodoItem = new TodoItem('', '', new Date());
+  private isEdit: boolean = false;
+
+  public editItem(item: TodoItem): void {
+    console.log('edit: ' + item.title);
+    this.currentItem = new TodoItem(item.title, item.description, item.date);
+    this.isEdit = true;
   }
 }
 
