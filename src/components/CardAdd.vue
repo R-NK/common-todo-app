@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-content">
         <div class="content">
-          いい感じの追加アイコンを表示したい
+          <font-awesome-icon icon="plus" class="fa-4x"/>
         </div>
       </div>
     </div>
@@ -21,5 +21,12 @@ export default class CardAdd extends Vue {
 <style scoped>
 .card {
     height: 100%;
+}
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #41b883;
 }
 </style>

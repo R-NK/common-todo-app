@@ -10,6 +10,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPlus);
+const fontawesome = require('@fortawesome/vue-fontawesome');
+Vue.component('font-awesome-icon', fontawesome.FontAwesomeIcon);
+Vue.config.productionTip = false;
+
 export default Vue.extend({
   metaInfo() {
     return {
