@@ -1,14 +1,20 @@
 <template>
-  <div class="section">
-    <div class="container">
+  <v-content>
+    <v-container>
       <img alt="Vue logo" src="../assets/logo.png">
-      <div class="columns">
-        <card v-for="(item, index) in todoItems" :key="item.id" :item="item" @remove="todoItems.splice(index, 1)" @editItem="editItem"></card>
-        <card-add></card-add>
-      </div>
-      <modal-card v-if="isEdit" :item="currentItem" @change-item="changeItem" @close="isEdit = false"></modal-card>
-    </div>
-  </div>
+      <v-container grid-list-md fluid>
+        <v-layout row wrap>
+          <v-flex md3 v-for="(item, index) in todoItems" :key="item.id">
+            <card :item="item" @remove="todoItems.splice(index, 1)" @editItem="editItem"></card>
+          </v-flex>
+          <v-flex md3>
+            <card-add></card-add>
+          </v-flex>
+        </v-layout>
+      </v-container>
+      <modal-card :item="currentItem" @change-item="changeItem" ref="dialogue"></modal-card>
+    </v-container>
+  </v-content>
 </template>
 
 <script lang="ts">
@@ -27,19 +33,19 @@ import ModalCard from '@/components/ModalCard.vue';
 })
 export default class Home extends Vue {
   public todoItems: TodoItem[] = [
-    new TodoItem(1, 'todo1', 'ひとつめのtodo', new Date('1995-12-17T03:24:00')),
-    new TodoItem(2, 'todo2', 'ふたつめのtodo', new Date('2105-04-09T23:24:00')),
-    new TodoItem(3, 'todo3', 'みっつめのtodo', new Date('3201-08-23T01:24:00')),
+    new TodoItem(1, 'todo1', 'ひとつめのtodo', '1995-12-17T03:24:00'),
+    new TodoItem(2, 'todo2', 'ふたつめのtodo', '2105-04-09T23:24:00'),
+    new TodoItem(3, 'todo3', 'みっつめのtodo', '3201-08-23T01:24:00'),
   ];
 
-  private currentItem: TodoItem = new TodoItem(0, '', '', new Date());
-  private isEdit: boolean = false;
+  private currentItem: TodoItem = new TodoItem(0, '', '', '');
 
   public editItem(item: TodoItem): void {
     console.log(JSON.stringify(item));
     // copy same fields as item
     this.currentItem = { ...item };
-    this.isEdit = true;
+    const dialogue: any = this.$refs.dialogue;
+    dialogue.open(item);
   }
 
   public changeItem(newItem: TodoItem): void {
@@ -58,6 +64,4 @@ export default class Home extends Vue {
     return Math.max(...ids) + 1;
   }
 }
-
-
 </script>

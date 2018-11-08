@@ -1,30 +1,22 @@
 <template>
-  <div class="column is-3">
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          {{ item.title }}
-        </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div class="card-content">
-        <div class="content">
-          <label>{{ item.description }}</label>
-          <br>
-          <time datetime="2016-1-1">{{ item.date }}</time>
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Done</a>
-        <a href="#" class="card-footer-item" v-on:click="$emit('editItem', item)">Edit</a>
-        <a href="#" class="card-footer-item" v-on:click="$emit('remove')">Delete</a>
-      </footer>
-    </div>
-  </div>
+  <v-card height="100%" class="flexcard">
+    <v-card-title>
+      <span class="headline">
+        {{ item.title }}
+      </span>
+    </v-card-title>
+    <v-card-text>
+      <label class="wrap-text">{{ item.description }}</label>
+      <br>
+      <label>{{ item.datetime }}</label>
+    </v-card-text>
+    <v-spacer></v-spacer>
+    <v-card-actions>
+      <a href="#" class="card-footer-item">Done</a>
+      <a href="#" class="card-footer-item" v-on:click="$emit('editItem', item)">Edit</a>
+      <a href="#" class="card-footer-item" v-on:click="$emit('remove')">Delete</a>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -36,3 +28,14 @@ export default class Card extends Vue {
   @Prop() private item!: string;
 }
 </script>
+
+<style scoped>
+.flexcard {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap-text {
+  word-wrap: break-word;
+}
+</style>

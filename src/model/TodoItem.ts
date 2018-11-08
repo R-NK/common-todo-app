@@ -2,11 +2,11 @@ export default class TodoItem {
     public id: number;
     public title: string;
     public description: string;
-    public date: Date;
-    constructor(id: number, title: string, description: string, date: Date) {
+    public datetime: string;
+    constructor(id: number, title: string, description: string, datetime: string) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.datetime = datetime;
     }
 }

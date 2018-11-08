@@ -1,13 +1,9 @@
 <template>
-  <div class="column is-3">
-    <div class="card">
-      <div class="card-content">
-        <div class="content">
-          <font-awesome-icon icon="plus" class="fa-4x"/>
-        </div>
-      </div>
+  <v-card height="100%">
+    <div class="card-content">
+      いい感じの追加アイコン
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -19,14 +15,8 @@ export default class CardAdd extends Vue {
 </script>
 
 <style scoped>
-.card {
-    height: 100%;
-}
 .card-content {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   color: #41b883;
 }
 </style>

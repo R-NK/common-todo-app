@@ -1,22 +1,21 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <v-app>
+    <div id="app">
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </div>
+      <router-view/>
     </div>
-    <router-view/>
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 
-library.add(faPlus);
-const fontawesome = require('@fortawesome/vue-fontawesome');
-Vue.component('font-awesome-icon', fontawesome.FontAwesomeIcon);
-Vue.config.productionTip = false;
+Vue.use(Vuetify);
 
 export default Vue.extend({
   metaInfo() {
@@ -32,6 +31,8 @@ export default Vue.extend({
 
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons');
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
