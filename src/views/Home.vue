@@ -23,6 +23,7 @@ import Card from '@/components/Card.vue'; // @ is an alias to /src
 import CardAdd from '@/components/CardAdd.vue';
 import TodoItem from '@/model/TodoItem.ts';
 import ModalCard from '@/components/ModalCard.vue';
+import { DateTime } from 'luxon';
 
 @Component({
   components: {
@@ -60,7 +61,8 @@ export default class Home extends Vue {
   }
 
   public addItem(): void {
-    const newItem = new TodoItem(this.getNewId(this.todoItems), '', '', '');
+    const currentUTC = DateTime.local().toUTC().toISO();
+    const newItem = new TodoItem(this.getNewId(this.todoItems), '', '', currentUTC);
     const dialogue: any = this.$refs.dialogue;
     dialogue.open(newItem);
   }
