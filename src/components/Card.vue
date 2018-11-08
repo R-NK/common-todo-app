@@ -8,7 +8,7 @@
     <v-card-text>
       <label class="wrap-text">{{ item.description }}</label>
       <br>
-      <label>{{ item.datetime }}</label>
+      <label>{{ convertDatetime(item.datetime) }}</label>
     </v-card-text>
     <v-spacer></v-spacer>
     <v-card-actions>
@@ -21,11 +21,18 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { DateTime } from 'luxon';
 
 @Component
 export default class Card extends Vue {
   public edit: boolean = false;
   @Prop() private item!: string;
+
+  private convertDatetime(datetime: string) {
+    const format = DateTime.DATETIME_MED;
+    const datetimeString = DateTime.fromISO(datetime).toLocaleString(format);
+    return datetimeString;
+  }
 }
 </script>
 
