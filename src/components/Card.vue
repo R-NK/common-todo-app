@@ -29,6 +29,9 @@ export default class Card extends Vue {
   @Prop() private item!: string;
 
   private convertDatetime(datetime: string) {
+    if (datetime === '') {
+      return '';
+    }
     const format = DateTime.DATETIME_MED;
     const datetimeString = DateTime.fromISO(datetime).toLocaleString(format);
     return datetimeString;

@@ -8,11 +8,11 @@
             <card :item="item" @remove="todoItems.splice(index, 1)" @editItem="editItem"></card>
           </v-flex>
           <v-flex md3>
-            <card-add></card-add>
+            <card-add @addItem="addItem"></card-add>
           </v-flex>
         </v-layout>
       </v-container>
-      <modal-card :item="currentItem" @change-item="changeItem" ref="dialogue"></modal-card>
+      <modal-card @change-item="changeItem" ref="dialogue"></modal-card>
     </v-container>
   </v-content>
 </template>
@@ -38,18 +38,18 @@ export default class Home extends Vue {
     new TodoItem(3, 'todo3', 'みっつめのtodo', '3201-08-23T01:24:00'),
   ];
 
-  private currentItem: TodoItem = new TodoItem(0, '', '', '');
-
   public editItem(item: TodoItem): void {
     console.log(JSON.stringify(item));
-    // copy same fields as item
-    this.currentItem = { ...item };
     const dialogue: any = this.$refs.dialogue;
     dialogue.open(item);
   }
 
   public changeItem(newItem: TodoItem): void {
-    this.todoItems = this.todoItems.map((element, index) => {
+    // add new item
+    if (!this.todoItems.some((element) =>  element.id === newItem.id)) {
+      this.todoItems.push(newItem);
+    }
+    this.todoItems = this.todoItems.map((element) => {
       if (element.id === newItem.id) {
         return { ...newItem };
       } else {
@@ -57,6 +57,12 @@ export default class Home extends Vue {
       }
     });
     console.log(JSON.stringify(this.todoItems));
+  }
+
+  public addItem(): void {
+    const newItem = new TodoItem(this.getNewId(this.todoItems), '', '', '');
+    const dialogue: any = this.$refs.dialogue;
+    dialogue.open(newItem);
   }
 
    private getNewId(items: TodoItem[]): number {
