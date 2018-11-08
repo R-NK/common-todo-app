@@ -13,13 +13,13 @@
             <v-text-field label="Description" v-model="currentItem.description"></v-text-field>
           </v-form>
           <br>
-          <datetime type="datetime" v-model="currentItem.datetime"></datetime>
+          <datetime type="datetime" v-model="currentItem.datetime" class="theme-color"></datetime>
         </div>
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn flat color="green" @click="isEdit = false">Cancel</v-btn>
-        <v-btn flat color="green" @click="saveItem()">Save</v-btn>
+        <v-btn flat color="#41b883" @click="isEdit = false">Cancel</v-btn>
+        <v-btn flat color="#41b883" @click="saveItem()">Save</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -57,5 +57,17 @@ export default class ModalCard extends Vue {
 <style>
   .v-dialog {
     overflow-y: visible;
+  }
+
+  .theme-color .vdatetime-popup__header,
+  .theme-color .vdatetime-calendar__month__day--selected > span > span,
+  .theme-color .vdatetime-calendar__month__day--selected:hover > span > span {
+    background: #41b883;
+  }
+
+  .theme-color .vdatetime-year-picker__item--selected,
+  .theme-color .vdatetime-time-picker__item--selected,
+  .theme-color .vdatetime-popup__actions__button {
+    color: #41b883;
   }
 </style>

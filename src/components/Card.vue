@@ -12,9 +12,9 @@
     </v-card-text>
     <v-spacer></v-spacer>
     <v-card-actions>
-      <a href="#" class="card-footer-item">Done</a>
-      <a href="#" class="card-footer-item" v-on:click="$emit('editItem', item)">Edit</a>
-      <a href="#" class="card-footer-item" v-on:click="$emit('remove')">Delete</a>
+      <a href="#" class="card-footer-item theme-color">Done</a>
+      <a href="#" class="card-footer-item theme-color" v-on:click="$emit('editItem', item)">Edit</a>
+      <a href="#" class="card-footer-item theme-color" v-on:click="$emit('remove')">Delete</a>
     </v-card-actions>
   </v-card>
 </template>
@@ -44,5 +44,9 @@ export default class Card extends Vue {
 
 .wrap-text {
   word-wrap: break-word;
+}
+
+.theme-color {
+  color: #41b883;
 }
 </style>
