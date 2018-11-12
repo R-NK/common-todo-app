@@ -1,15 +1,16 @@
 <template>
   <v-app>
     <div id="app">
-      <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
-      </div>
-      <v-container fill-height ma-0 fluid pa-5 class="hero-banner">
+      
+      <v-container fluid pa-5 ma-0 class="hero-banner" style="width: 100%;">
+        <div id="nav">
+          <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>
+        </div>
         <v-layout align-center justify-center>
           <div>
             <h3 class="display-2 hero-text">よくあるやつ</h3>
-            <label class="subheading hero-text">こういうのよくあるよね</label>
+            <p class="subheading hero-text text-xs-left">こういうのよくあるよね</p>
           </div>
         </v-layout>
       </v-container>
@@ -54,11 +55,11 @@ export default Vue.extend({
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #2c3e50;
 }
 
 .hero-banner {
