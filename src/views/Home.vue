@@ -33,11 +33,7 @@ import { DateTime } from 'luxon';
   },
 })
 export default class Home extends Vue {
-  public todoItems: TodoItem[] = [
-    {id: 1, title: 'todo1', description: 'ひとつめのtodo', datetime: '1995-12-17T03:24:00'},
-    {id: 2, title: 'todo2', description: 'ふたつめのtodo', datetime: '2105-04-09T23:24:00'},
-    {id: 3, title: 'todo3', description: 'みっつめのtodo', datetime: '3201-08-23T01:24:00'},
-  ];
+  public todoItems: TodoItem[] = [];
 
   public mounted() {
     const todoItems = this.getTodoItems();
@@ -100,3 +96,24 @@ export default class Home extends Vue {
   }
 }
 </script>
+
+<style scoped>
+  .hero-image {
+    color: #41b883;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+</style>

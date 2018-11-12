@@ -5,6 +5,14 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/about">About</router-link>
       </div>
+      <v-container fill-height ma-0 fluid pa-5 class="hero-banner">
+        <v-layout align-center justify-center>
+          <div>
+            <h3 class="display-2 hero-text">よくあるやつ</h3>
+            <label class="subheading hero-text">こういうのよくあるよね</label>
+          </div>
+        </v-layout>
+      </v-container>
       <router-view/>
     </div>
   </v-app>
@@ -51,5 +59,13 @@ export default Vue.extend({
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.hero-banner {
+  background-color: #42b983;
+}
+
+.hero-text {
+  color: white;
 }
 </style>
