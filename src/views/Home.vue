@@ -91,6 +91,9 @@ export default class Home extends Vue {
   }
 
   private getNewId(items: TodoItem[]): number {
+    if (items.length === 0) {
+      return 0;
+    }
     const ids = items.map((element) => element.id);
     return Math.max(...ids) + 1;
   }
